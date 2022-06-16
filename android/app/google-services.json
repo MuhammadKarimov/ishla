@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "518531921320",
+    "project_id": "diplomishi-61d1c",
+    "storage_bucket": "diplomishi-61d1c.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:518531921320:android:005bc3ef6b3a12a91c999d",
+        "android_client_info": {
+          "package_name": "com.Muhammad.professor"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "518531921320-3p46jcm51oapecefhc2kouc6oae96ida.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAKbDRpvF0J-m9bNZcdctIqasi2uLGUEFc"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "518531921320-3p46jcm51oapecefhc2kouc6oae96ida.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
