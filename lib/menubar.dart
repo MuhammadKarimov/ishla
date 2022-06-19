@@ -52,7 +52,9 @@ class MenuBar extends StatelessWidget {
           ListTile(
             leading: Icon(Icons.book),
             title: Text("Ustoz-Shogird ishlari"),
-            onTap: ()=> null,
+            onTap: ()=>Navigator.of(context)
+                .push(MaterialPageRoute(
+              builder: (context)=>Table())),
           ),
           Divider(),
           ListTile(

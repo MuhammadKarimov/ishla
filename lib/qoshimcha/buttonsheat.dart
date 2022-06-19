@@ -1,45 +1,27 @@
 import 'package:flutter/material.dart';
-
-class ButtonSheat extends StatefulWidget {
-  final String title;
-  final VoidCallback onclickconfirm;
-  final VoidCallback onclickclose;
-  const ButtonSheat({Key? key,
-    required this.title,
-    required this.onclickconfirm,
-    required this.onclickclose}) : super(key: key);
+class Buttonsheat extends StatefulWidget {
+  const Buttonsheat({Key? key}) : super(key: key);
 
   @override
-  State<ButtonSheat> createState() => _ButtonSheatState();
+  State<Buttonsheat> createState() => _ButtonsheatState();
 }
-class _ButtonSheatState extends State<ButtonSheat> {
 
+class _ButtonsheatState extends State<Buttonsheat> {
   @override
-  Widget build(BuildContext context) =>Scaffold(
-      appBar: AppBar(
-          title: Text(widget.title),
+  Widget build(BuildContext context) {
+    return Scaffold(
+      body: DataTable(
+        columns: [
+          DataColumn(label: Text('salom'),),
+          DataColumn(label: Text("olam")),
+        ],
+        rows: const [
+          DataRow(cells:[
+            DataCell(Text('2018'),
+            ),
+          ]),
+        ],
       ),
-    body: ListView(
-      children: [
-        buildbutton(),
-
-      ],
-
-
-      ),
-
     );
-  Widget buildbutton()=>Row(
-    mainAxisAlignment: MainAxisAlignment.spaceAround,
-    children: [
-      TextButton(onPressed: (){{widget.onclickclose;}},
-          child: Text('Close'),
-      style: TextButton.styleFrom(primary: Colors.red),
-      ),
-      ElevatedButton(onPressed: (){{widget.onclickconfirm;}},
-          child: Text('Confirm'),
-      style: ElevatedButton.styleFrom(primary: Colors.greenAccent),)
-    ],
-  );
   }
-
+}

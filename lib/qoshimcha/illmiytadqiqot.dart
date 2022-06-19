@@ -1,32 +1,23 @@
 import 'package:flutter/material.dart';
-import 'package:cloud_firestore/cloud_firestore.dart';
-import 'package:firebase_core/firebase_core.dart';
-
 class IlmiyTadqiqot extends StatefulWidget {
   const IlmiyTadqiqot({Key? key}) : super(key: key);
-
   @override
   State<IlmiyTadqiqot> createState() => _IlmiyTadqiqotState();
 }
-
 class _IlmiyTadqiqotState extends State<IlmiyTadqiqot> {
-  void initFirebase() async{
-    WidgetsFlutterBinding.ensureInitialized();
-    await Firebase.initializeApp();
-  }
-  final saqla = TextEditingController();
+  String saqla='';
+  String sonmi='';
   List save =[];
   @override
   void initState() {
     // TODO: implement initState
     super.initState();
-    initFirebase();
     save.addAll(['salom','olam','gul']);
   }
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: Colors.amberAccent,
+      backgroundColor: Colors.grey,
       appBar: AppBar(
         title: Text('Ilmiy-tadqiqot'),
         centerTitle: true,
@@ -38,26 +29,66 @@ class _IlmiyTadqiqotState extends State<IlmiyTadqiqot> {
               child:Card(
                 child: ListTile(
                   title: Text(save[index]),
-                  trailing: Column(
-                    children: [
-                      Text('Nazariy qism',style: TextStyle(
-                        fontSize: 25,color: Colors.black
-                      ),),
-
-
-                    ],
-                  ),
                 ),
               ),
-            onDismissed: (direction){
+            onDismissed: (direction) {
+            setState(() {
+              save.removeAt(index);
+            });
             //if(direction==DismissDirection.endToStart){
             },
           );
           }
       ),
       floatingActionButton: FloatingActionButton(
-
-        onPressed: (){},
+        onPressed: (){
+          showDialog(context: context, builder: (BuildContext context){
+            return AlertDialog(
+              title: Text('Element kiriting'),
+              content: TextField(
+                onChanged: (String value){
+                  saqla=value;
+                },
+              ),
+              actions: [
+                TextField(
+                  onChanged: (String son){
+                    sonmi=son;
+                  },
+                ),
+                TextField(
+                  onChanged: (String son){
+                    sonmi=son;
+                  },
+                ),
+                TextField(
+                  onChanged: (String son){
+                    sonmi=son;
+                  },
+                ),
+                TextField(
+                  onChanged: (String son){
+                    sonmi=son;
+                  },
+                ),
+                TextField(
+                  onChanged: (String son){
+                    sonmi=son;
+                  },
+                ),
+                SizedBox(width: 10,),
+                ElevatedButton(onPressed: (){
+                  setState(() {
+                    save.add(saqla);
+                    save.add(sonmi);
+                    Navigator.of(context).pop();
+                  });
+                }, child: Text('Qoshish'))
+              ],
+            );
+          });
+        },
+        child: Icon(Icons.add,color: Colors.white,),
       ),
 
     );

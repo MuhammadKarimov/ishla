@@ -1,22 +1,14 @@
-import 'dart:html';
-import 'package:firebase_core/firebase_core.dart';
-import 'package:cloud_firestore/cloud_firestore.dart';
+
 import 'package:flutter/material.dart';
 import 'package:professor/qoshimcha/buttonsheat.dart';
-
 class OquvIshlari extends StatefulWidget {
   const OquvIshlari({Key? key}) : super(key: key);
   @override
   State<OquvIshlari> createState() => _OquvIshlariState();
 }
 class _OquvIshlariState extends State<OquvIshlari> {
-  void initbase() async {
-    WidgetsFlutterBinding.ensureInitialized();
-    await Firebase.initializeApp();
-  }
   void initstate(){
     super.initState();
-    initbase();
   }
   List<String>items=['1','2','3','4','5','6','7','8'];
   String ? selecteditem='1';
@@ -44,51 +36,49 @@ class _OquvIshlariState extends State<OquvIshlari> {
            SizedBox(width: 10,),
            Column(
              children: [
-               Text('Nazariy qism',style:TextStyle(fontSize: 20),),
+               Text('Rejada',style:TextStyle(fontSize: 44),),
+               SizedBox(width: 10,),
                ElevatedButton(onPressed: (){
                  showModalBottomSheet(context: context,
                      builder: (context)=> Center(
                        child: ListView(
                          children: [
-                           Padding(
-                             padding: const EdgeInsets.all(8.0),
-                             child: TextField(
-                               maxLength: 99,
-                               cursorColor: Colors.red,
-                               style: TextStyle(
-                                   backgroundColor: Colors.white30
-                               ),
-                               controller: _mavzucontroller,
-                               decoration: InputDecoration(
-                                 hintMaxLines: 4,
-                                 prefixIcon: Icon(Icons.login_outlined,size: 22,),
-                                 iconColor: Colors.black,
-                                 border: InputBorder.none,
-                                 prefixIconColor: Colors.redAccent,
-                                 hintText: 'Mavzu kiriting',
-                                 filled: true,
-                                 fillColor: Colors.black12,
-                                 hintStyle: TextStyle(
-                                   backgroundColor: Colors.white30,
-                                   color: Colors.black26,
-                                   fontSize: 16,
-                                 ),
-                                 labelText: '',
-                                 labelStyle: TextStyle(
-                                     fontSize: 16,
-                                     backgroundColor: Colors.black,
-                                     color: Colors.lightBlue
-                                 ),
-                                 suffixIcon: IconButton(
-                                   icon: Icon(Icons.close),color: Colors.red,
-                                   onPressed: ()=>_mavzucontroller.clear(),
-                                 ),
-                                 focusedBorder: OutlineInputBorder(
-                                   borderRadius: BorderRadius.circular(20),
-                                 ),
-                               ),
-                               textInputAction: TextInputAction.done,
+                           TextField(
+                             maxLength: 3,
+                             cursorColor: Colors.red,
+                             style: TextStyle(
+                                 backgroundColor: Colors.white30
                              ),
+                             controller: _mavzucontroller,
+                             decoration: InputDecoration(
+                               hintMaxLines: 4,
+                               prefixIcon: Icon(Icons.login_outlined,size: 14,),
+                               iconColor: Colors.black,
+                               border: InputBorder.none,
+                               prefixIconColor: Colors.redAccent,
+                               hintText: 'Amaliy',
+                               filled: true,
+                               fillColor: Colors.black12,
+                               hintStyle: TextStyle(
+                                 backgroundColor: Colors.white30,
+                                 color: Colors.black26,
+                                 fontSize: 16,
+                               ),
+                               labelText: '',
+                               labelStyle: TextStyle(
+                                   fontSize: 16,
+                                   backgroundColor: Colors.black,
+                                   color: Colors.lightBlue
+                               ),
+                               suffixIcon: IconButton(
+                                 icon: Icon(Icons.close),color: Colors.red,
+                                 onPressed: ()=>_mavzucontroller.clear(),
+                               ),
+                               focusedBorder: OutlineInputBorder(
+                                 borderRadius: BorderRadius.circular(20),
+                               ),
+                             ),
+                             textInputAction: TextInputAction.done,
                            ),
                            Padding(
                              padding: const EdgeInsets.all(8.0),
@@ -120,8 +110,6 @@ class _OquvIshlariState extends State<OquvIshlari> {
                                color: Colors.blue,
                                  child: Text("Submit"),
                                  onPressed: (){
-                                 FirebaseFirestore.instance.collection('items').add(
-                                     {'item':_mavzucontroller});
                                  Navigator.of(context).pop();
                                  }
                              ),
@@ -137,7 +125,7 @@ class _OquvIshlariState extends State<OquvIshlari> {
              ],
            ),
            Column(children: [
-             Text('Amaliy ish',style:TextStyle(fontSize: 20),),
+             Text('Amalda',style:TextStyle(fontSize: 14),),
              ElevatedButton(onPressed: (){
                showModalBottomSheet(context: context,
                    builder: (context)=> Center(
