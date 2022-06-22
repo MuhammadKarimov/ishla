@@ -161,7 +161,7 @@ class _AdminPanelState extends State<AdminPanel> {
             height: 40,
             child: ElevatedButton(onPressed: (){
               setState(() {
-                text = 'Ism: ${firstname.text}  familya: ${lastname.text}';
+                text = 'Ism: ${firstname.text}  familya: ${lastname.text} login: ${loginadmin.text} Parol: ${passwordadmin.text}';
 
               });
             },

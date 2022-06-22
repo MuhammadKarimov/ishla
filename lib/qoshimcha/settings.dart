@@ -1,6 +1,8 @@
+import 'dart:io';
 import 'package:flutter/material.dart';
 import 'package:professor/main.dart';
 import 'package:professor/menubar.dart';
+import 'package:image_picker/image_picker.dart';
 class Settings extends StatefulWidget {
   const Settings({Key? key}) : super(key: key);
 
@@ -9,6 +11,8 @@ class Settings extends StatefulWidget {
 }
 
 class _SettingsState extends State<Settings> {
+   late PickedFile _imagefile ;
+  final ImagePicker picker =ImagePicker();
   final parol =TextEditingController();
   final newpassword=TextEditingController();
   final returnpassword=TextEditingController();
@@ -26,15 +30,7 @@ class _SettingsState extends State<Settings> {
             color: Colors.white,
             child: Column(
               children: [
-                Padding(
-                  padding: const EdgeInsets.all(20.0),
-                  child: CircleAvatar(maxRadius: 80,
-                    child:ClipOval(
-                      child: Image.asset('asset/kitob.png',
-                      fit: BoxFit.cover,),
-                    ),
-                  ),
-                ),
+                imagelist(),
                 paroll(),
                 newparol(),
                 qayta(),
@@ -51,11 +47,66 @@ class _SettingsState extends State<Settings> {
               ],
             ) ,
           ),
-
-
         ],
       ),
     );
+  }
+  Widget imagelist()=>Padding(
+    padding: const EdgeInsets.all(20.0),
+    child: Stack(
+      children :[
+        CircleAvatar(maxRadius: 80,
+        child:ClipOval(
+          child:_imagefile == null? Image.asset('asset/kitob.png',
+            fit: BoxFit.cover,)
+              :Image.file(File(_imagefile.path))
+        ),
+      ),
+        Positioned(
+          bottom: 20,
+            right: 20,
+            child: InkWell(
+          onTap: (){
+            showModalBottomSheet(context: context, builder: (builder)=>bottom());
+          },
+          child: Icon(
+            Icons.camera_alt,
+            color: Colors.teal,
+            size: 28,
+          ),
+        ))
+    ]),
+
+  );
+  Widget bottom()=>Container(
+    height: 100,
+    width: MediaQuery.of(context).size.width,
+    margin: EdgeInsets.symmetric(horizontal: 20,vertical: 20),
+
+    child: Column(
+      children: [
+        Text('choose you photo'),
+        SizedBox(height: 20,),
+        Row(
+          children: [
+            FlatButton.icon(onPressed: (){
+              yuklash(ImageSource.gallery);
+            },
+                icon: Icon(Icons.camera), label: Text('Gallery')),
+          ],
+        )
+
+      ],
+
+    ),
+  );
+  void yuklash(ImageSource source) async{
+    final yukla=await picker.getImage(
+      source:source,
+    );
+    setState(() {
+      _imagefile=yukla!;
+    });
   }
   Widget paroll()=> Padding(
     padding: const EdgeInsets.all(10.0),

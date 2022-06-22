@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:professor/menubar.dart';
 import 'package:professor/qoshimcha/adminpanel.dart';
+import 'package:professor/qoshimcha/table.dart'as sardor;
+import 'package:professor/qoshimcha/table.dart';
 import 'package:professor/test.dart';
 import 'registration.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
